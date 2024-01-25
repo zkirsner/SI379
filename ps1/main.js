@@ -3,7 +3,7 @@ let score = 0;
 // Write code that *every second*, picks a random unwhacked hole (use getRandomUnwhackedHoleId)
 // and adds the "needs-whack" class
 const interval = setInterval(() => {
-    let randomHoleID = getRandomUnwhackedHoleId();
+    const randomHoleID = getRandomUnwhackedHoleId();
     document.getElementById(randomHoleID).classList.add("needs-whacked");
     console.log('TODO: Add the "needs-whack" class to a random hole');
 }, 1000);
