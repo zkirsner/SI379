@@ -4,7 +4,14 @@ let score = 0;
 // and adds the "needs-whack" class
 const interval = setInterval(() => {
     const randomHoleID = getRandomUnwhackedHoleId();
-    document.getElementById(randomHoleID).classList.add("needs-whacked");
+    if (randomHoleID) {
+        const holeElement = document.getElementById(randomHoleID)
+        holeElement.classList.add("needs-whack");
+        console.log("added needs-whack class to random hole");
+    }
+    // else {
+    //     clearInterval(interval);
+    // }
     console.log('TODO: Add the "needs-whack" class to a random hole');
 }, 1000);
 
@@ -15,6 +22,24 @@ for(const id of getAllHoleIds()) {
     //          2. Add the "animating-whack" class *for 500 milliseconds*
     //          3. Increment the score by 1 (and update the score display)
     //          4. If the score is 45 or higher, stop the game (by clearing the interval)
+    const holeElement = document.getElementById(id);
+    holeElement.addEventListener('click', () =>{
+        console.log("clicked");
+        if (holeElement.classList.contains("needs-whack")) {
+            holeElement.classList.remove("needs-whack");
+            holeElement.classList.add("animating-whack");
+
+            setTimeout(() => {
+                holeElement.classList.remove("animating-whack");
+            }, 500);
+            score++;
+        }
+        document.getElementById('score').innerText = `Score: ${score}`;
+        if (score >=45) {
+            clearInterval(interval);
+            console.log("interval cleared");
+        }
+    });
     console.log(`TODO: Add a click listener for #${id} here`);
 }
 
