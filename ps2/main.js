@@ -50,9 +50,10 @@ inputEl.addEventListener('keydown', (event) => {
          let guess = inputEl.value;
          if (guess.length !== WORD_LENGTH) {
              showInfoMessage('Your guess must be ' + `${WORD_LENGTH}` + ' letters long.');
-         } else if (guess.toUpperCase() === correctAnswer) {
-             showInfoMessage('You win! The answer was ' + correctAnswer);
-             inputEl.setAttribute('disabled', 'true')
+         } else if (guess.toUpperCase() === correctAnswer.toUpperCase()) {
+            displayGuessFeedback(guess.toUpperCase());
+            showInfoMessage('You win! The answer was ' + correctAnswer);
+            inputEl.setAttribute('disabled', 'true')
          } else {
              isValidWord(guess, (isValid) => {
                  if (isValid) {
@@ -69,8 +70,8 @@ inputEl.addEventListener('keydown', (event) => {
  });
  
 //AI use
-        //I used ChatGPT to help correct errors in the logic of my conditionals in the displayGuestFeedback function. I also used it to correct the code in the 'else' statement of the event listener
-        //so that isValidWord was called and implemented properly
+        //I used ChatGPT to help correct errors in the logic of my conditionals in the displayGuestFeedback function. 
+        //I also used it to correct the code in the 'else' statement of the event listener so that isValidWord was called and implemented properly
 
 
 // TODO: Fill in your code here
