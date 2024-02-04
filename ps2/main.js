@@ -19,6 +19,60 @@ getRandomAnswer((answer) => {
     //       You can comment it out.
 });
 
+function displayGuessFeedback(guess) {
+    let guessDiv = document.createElement('div');
+    guessDiv.classList.add('guess');
+    for(let i = 0; i < guess.length; i++) {
+        const guessSpan = document.createElement('span');
+        guessSpan.classList.add('letter');
+        const letter = guess[i].toUpperCase();
+        const correctLetter = correctAnswer[i].toUpperCase();
+        if(letter === correctLetter) {
+            console.log('Adding correct class');
+            guessSpan.classList.add('correct');
+        } else if(correctAnswer.toUpperCase().includes(letter)) {
+            console.log('Adding present class');
+            guessSpan.classList.add('present');
+        } else {
+            console.log('Adding absent class');
+            guessSpan.classList.add('absent');
+        }
+        
+        guessSpan.textContent = letter;
+        guessDiv.appendChild(guessSpan);
+    }
+
+    document.getElementById('guesses').appendChild(guessDiv);
+}
+
+inputEl.addEventListener('keydown', (event) => {
+     if (event.key === 'Enter') {
+         let guess = inputEl.value;
+         if (guess.length !== WORD_LENGTH) {
+             showInfoMessage('Your guess must be ' + `${WORD_LENGTH}` + ' letters long.');
+         } else if (guess.toUpperCase() === correctAnswer) {
+             showInfoMessage('You win! The answer was ' + correctAnswer);
+             inputEl.setAttribute('disabled', 'true')
+         } else {
+             isValidWord(guess, (isValid) => {
+                 if (isValid) {
+                     displayGuessFeedback(guess.toUpperCase());
+                 } else {
+                     showInfoMessage(guess + ' is not a valid word.')
+                 }
+             });
+             inputEl.value = "";
+         }
+     } else {
+         clearInfoMessage();
+     }
+ });
+ 
+//AI use
+        //I used ChatGPT to help correct errors in the logic of my conditionals in the displayGuestFeedback function. I also used it to correct the code in the 'else' statement of the event listener
+        //so that isValidWord was called and implemented properly
+
+
 // TODO: Fill in your code here
 // Step 1: Define a function displayGuessFeedback(guess) that takes a guess and displays it on the page.
 // It should accept one argument (guess, a string) and will display feedback for that guess on the page.
