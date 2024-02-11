@@ -1,11 +1,9 @@
-// global variables
 let timerID = false;
 let selectedEventId;
 let thumbnailsContainer; 
 let eventsList;
 document.addEventListener("DOMContentLoaded", function() {
 getUMEventsWithImages(handleFetchedEvents);
-
 function displayThumbnails(events) {
     thumbnailsContainer = document.querySelector("#thumbnails");
     for (let i = 0; i < events.length; i++) {
@@ -18,7 +16,6 @@ function displayThumbnails(events) {
     }
     advanceImage();
 }
-
 
 function handleFetchedEvents(fetchedEvents) {
     eventsList = fetchedEvents;
@@ -70,6 +67,8 @@ function fetchAndDisplayEvents() {
 }
 fetchAndDisplayEvents();
 });
-// timerID = setTimeout(advanceImage, 10000);
+
+//Used ChatGPT in order to generate a template with a list of functions
+//and also to help debug the code within the functions
 
 
