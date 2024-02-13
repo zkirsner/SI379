@@ -16,6 +16,16 @@ function setCellValue(cell, value) { cell.innerText = value; }
 function getCellValue(cell) { return cell.innerText; }
 function isEmpty(cell) { return getCellValue(cell) === ''; }
 
+function markSquare(cell) {
+    if (isEmpty(cell) && !gameOver) {
+        setCellValue(cell, currentPlayer);
+        alternateCurrentPlayer();
+        const winner = getWinner();
+        if (winner) {
+            gameOver = true;
+        }
+    }
+}
 
 function createBoard() {
     const table = document.createElement("table"); // Create a table
@@ -28,6 +38,18 @@ function createBoard() {
         for(let j = 0; j < NUM_COLS; j++) {
             const cell = document.createElement("td"); // Create a cell
             row.append(cell); // ...and add it to the row
+            cell.addEventListener('click', () => {
+                if (currentPlayer === X) {
+                    markSquare(cell);
+                    if (!gameOver) {
+                        getComputerMove((cell) => {
+                            markSquare(cell);
+                        });
+                    }
+                };
+            });
         }
     }
 }
+createBoard();
+
