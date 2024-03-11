@@ -1,10 +1,56 @@
-/* #trivia-container {
-    background-color: aliceblue;
-} */
+
+body {    font-family: 'Montserrat', sans-serif;
+    display: grid;
+    place-items: center;
+    background-color: rgb(4, 4, 68);
+    color: white;
+    position: relative;
+}
+#countdown {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 50px;
+}
+#score {
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 6px;
+    border-color: white;
+    border-style: solid;
+    background-color: black;
+}
+.question {
+    font-size: 1.2em;
+}
+
 .correct {
     background-color: green;
 }
 
 .incorrect {
     background-color: red;
+}
+.answer-button {
+    margin: 2px;
+    font-size: 1em;
+    border-radius: 6px;
+}
+#score-feedback {
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 6px;
+    border-color: white;
+    border-style: solid;
+    background-color: black;
+    text-align: center;
 }
