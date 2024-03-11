@@ -138,6 +138,6 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchTriviaQuestions()
         .then(questions => displayTriviaQuestions(questions))
         .catch(error => console.error('Error fetching and displaying trivia questions:', error));
-    const countdownDuration = 30; 
+    const countdownDuration = 60; 
     displayCountdownTimer(countdownDuration);
 });
