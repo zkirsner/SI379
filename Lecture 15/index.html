@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="lodash.js"></script>
+    </head>
+    <body>
+        <script>
+            const chunked = _.chunk([1, 2, 3, 4, 5, 6, 7, 8, 9], 3);
+            console.log(chunked);
+            /* [[1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]] */
+            document.body.innerText = chunked.length;
+        </script>
+    </body>
+</html>
