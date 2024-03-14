@@ -12,6 +12,7 @@
   "author": "zack kirsner",
   "license": "ISC",
   "dependencies": {
+    "canvas-confetti": "^1.9.2",
     "lodash": "^4.17.21",
     "vite": "^5.1.6"
   }
